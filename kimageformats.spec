@@ -5,19 +5,20 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kimageformats
-Version  : 5.50.0
-Release  : 3
-URL      : https://download.kde.org/stable/frameworks/5.50/kimageformats-5.50.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.50/kimageformats-5.50.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.50/kimageformats-5.50.0.tar.xz.sig
+Version  : 5.51.0
+Release  : 4
+URL      : https://download.kde.org/stable/frameworks/5.51/kimageformats-5.51.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.51/kimageformats-5.51.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.51/kimageformats-5.51.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : LGPL-2.1
-Requires: kimageformats-lib
-Requires: kimageformats-license
-Requires: kimageformats-data
+Requires: kimageformats-data = %{version}-%{release}
+Requires: kimageformats-lib = %{version}-%{release}
+Requires: kimageformats-license = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
 
 %description
 # KImageFormats
@@ -35,8 +36,8 @@ data components for the kimageformats package.
 %package lib
 Summary: lib components for the kimageformats package.
 Group: Libraries
-Requires: kimageformats-data
-Requires: kimageformats-license
+Requires: kimageformats-data = %{version}-%{release}
+Requires: kimageformats-license = %{version}-%{release}
 
 %description lib
 lib components for the kimageformats package.
@@ -51,25 +52,25 @@ license components for the kimageformats package.
 
 
 %prep
-%setup -q -n kimageformats-5.50.0
+%setup -q -n kimageformats-5.51.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1536433670
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1539616144
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1536433670
+export SOURCE_DATE_EPOCH=1539616144
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kimageformats
-cp COPYING.LIB %{buildroot}/usr/share/doc/kimageformats/COPYING.LIB
+mkdir -p %{buildroot}/usr/share/package-licenses/kimageformats
+cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kimageformats/COPYING.LIB
 pushd clr-build
 %make_install
 popd
@@ -81,6 +82,7 @@ popd
 %defattr(-,root,root,-)
 /usr/share/kservices5/qimageioplugins/dds.desktop
 /usr/share/kservices5/qimageioplugins/eps.desktop
+/usr/share/kservices5/qimageioplugins/exr.desktop
 /usr/share/kservices5/qimageioplugins/jp2.desktop
 /usr/share/kservices5/qimageioplugins/kra.desktop
 /usr/share/kservices5/qimageioplugins/ora.desktop
@@ -95,6 +97,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/qt5/plugins/imageformats/kimg_eps.so
+/usr/lib64/qt5/plugins/imageformats/kimg_exr.so
 /usr/lib64/qt5/plugins/imageformats/kimg_kra.so
 /usr/lib64/qt5/plugins/imageformats/kimg_ora.so
 /usr/lib64/qt5/plugins/imageformats/kimg_pcx.so
@@ -106,5 +109,5 @@ popd
 /usr/lib64/qt5/plugins/imageformats/kimg_xcf.so
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kimageformats/COPYING.LIB
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kimageformats/COPYING.LIB

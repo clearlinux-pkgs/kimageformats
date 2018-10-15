@@ -1,5 +1,5 @@
 PKG_NAME := kimageformats
-URL = https://download.kde.org/stable/frameworks/5.50/kimageformats-5.50.0.tar.xz
+URL = https://download.kde.org/stable/frameworks/5.51/kimageformats-5.51.0.tar.xz
 ARCHIVES = 
 
 include ../common/Makefile.common
