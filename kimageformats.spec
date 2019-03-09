@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kimageformats
-Version  : 5.55.0
-Release  : 11
-URL      : https://download.kde.org/stable/frameworks/5.55/kimageformats-5.55.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.55/kimageformats-5.55.0.tar.xz
-Source99 : https://download.kde.org/stable/frameworks/5.55/kimageformats-5.55.0.tar.xz.sig
+Version  : 5.56.0
+Release  : 12
+URL      : https://download.kde.org/stable/frameworks/5.56/kimageformats-5.56.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.56/kimageformats-5.56.0.tar.xz
+Source99 : https://download.kde.org/stable/frameworks/5.56/kimageformats-5.56.0.tar.xz.sig
 Summary  : Image format plugins for Qt5
 Group    : Development/Tools
 License  : LGPL-2.1
@@ -52,22 +52,23 @@ license components for the kimageformats package.
 
 
 %prep
-%setup -q -n kimageformats-5.55.0
+%setup -q -n kimageformats-5.56.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549729196
+export SOURCE_DATE_EPOCH=1552152939
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549729196
+export SOURCE_DATE_EPOCH=1552152939
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimageformats
 cp COPYING.LIB %{buildroot}/usr/share/package-licenses/kimageformats/COPYING.LIB
