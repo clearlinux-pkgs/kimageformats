@@ -1,0 +1,22 @@
+commit 6fea48c4eea0b8061a4ca5c3051073fc7dc644c7
+Author: Albert Astals Cid <aacid@kde.org>
+Date:   Wed Apr 17 20:09:17 2019 +0200
+
+    xcf: Fix uninitialized memory use on broken documents
+    
+    oss-fuzz #14312
+
+diff --git a/src/imageformats/xcf.cpp b/src/imageformats/xcf.cpp
+index d727867..d84ec48 100644
+--- a/src/imageformats/xcf.cpp
++++ b/src/imageformats/xcf.cpp
+@@ -1078,6 +1078,9 @@ bool XCFImageFormat::loadLevel(QDataStream &xcf_io, Layer &layer, qint32 bpp)
+         for (uint j = 0; j < layer.nrows; j++) {
+             for (uint i = 0; i < layer.ncols; i++) {
+                 layer.image_tiles[j][i].fill(Qt::transparent);
++                if (layer.type == GRAYA_GIMAGE || layer.type == INDEXEDA_GIMAGE) {
++                    layer.alpha_tiles[j][i].fill(Qt::transparent);
++                }
+             }
+         }
+         return true;
