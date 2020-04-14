@@ -6,7 +6,7 @@
 #
 Name     : kimageformats
 Version  : 5.69.0
-Release  : 29
+Release  : 30
 URL      : https://download.kde.org/stable/frameworks/5.69/kimageformats-5.69.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.69/kimageformats-5.69.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.69/kimageformats-5.69.0.tar.xz.sig
@@ -60,7 +60,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1586876873
+export SOURCE_DATE_EPOCH=1586876997
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -77,7 +77,7 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1586876873
+export SOURCE_DATE_EPOCH=1586876997
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimageformats
 cp %{_builddir}/kimageformats-5.69.0/COPYING.LIB %{buildroot}/usr/share/package-licenses/kimageformats/9a1929f4700d2407c70b507b3b2aaf6226a9543c
