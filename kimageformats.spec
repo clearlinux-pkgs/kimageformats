@@ -6,7 +6,7 @@
 #
 Name     : kimageformats
 Version  : 5.83.0
-Release  : 44
+Release  : 45
 URL      : https://download.kde.org/stable/frameworks/5.83/kimageformats-5.83.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.83/kimageformats-5.83.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.83/kimageformats-5.83.0.tar.xz.sig
