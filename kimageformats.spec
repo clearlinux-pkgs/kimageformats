@@ -6,7 +6,7 @@
 #
 Name     : kimageformats
 Version  : 5.94.0
-Release  : 55
+Release  : 56
 URL      : https://download.kde.org/stable/frameworks/5.94/kimageformats-5.94.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.94/kimageformats-5.94.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.94/kimageformats-5.94.0.tar.xz.sig
@@ -21,6 +21,7 @@ BuildRequires : buildreq-kde
 BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
 BuildRequires : extra-cmake-modules-data
 BuildRequires : karchive-dev
+BuildRequires : libavif-dev
 
 %description
 # KImageFormats
@@ -62,7 +63,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1652651240
+export SOURCE_DATE_EPOCH=1654718458
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -78,7 +79,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1652651240
+export SOURCE_DATE_EPOCH=1654718458
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimageformats
 cp %{_builddir}/kimageformats-5.94.0/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kimageformats/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0
@@ -98,6 +99,7 @@ popd
 %files data
 %defattr(-,root,root,-)
 /usr/share/kservices5/qimageioplugins/ani.desktop
+/usr/share/kservices5/qimageioplugins/avif.desktop
 /usr/share/kservices5/qimageioplugins/dds.desktop
 /usr/share/kservices5/qimageioplugins/eps.desktop
 /usr/share/kservices5/qimageioplugins/exr.desktop
@@ -116,6 +118,7 @@ popd
 %files lib
 %defattr(-,root,root,-)
 /usr/lib64/qt5/plugins/imageformats/kimg_ani.so
+/usr/lib64/qt5/plugins/imageformats/kimg_avif.so
 /usr/lib64/qt5/plugins/imageformats/kimg_eps.so
 /usr/lib64/qt5/plugins/imageformats/kimg_exr.so
 /usr/lib64/qt5/plugins/imageformats/kimg_hdr.so
