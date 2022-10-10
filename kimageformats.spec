@@ -5,11 +5,11 @@
 # Source0 file verified with key 0x58D0EE648A48B3BB (faure@kde.org)
 #
 Name     : kimageformats
-Version  : 5.98.0
-Release  : 60
-URL      : https://download.kde.org/stable/frameworks/5.98/kimageformats-5.98.0.tar.xz
-Source0  : https://download.kde.org/stable/frameworks/5.98/kimageformats-5.98.0.tar.xz
-Source1  : https://download.kde.org/stable/frameworks/5.98/kimageformats-5.98.0.tar.xz.sig
+Version  : 5.99.0
+Release  : 61
+URL      : https://download.kde.org/stable/frameworks/5.99/kimageformats-5.99.0.tar.xz
+Source0  : https://download.kde.org/stable/frameworks/5.99/kimageformats-5.99.0.tar.xz
+Source1  : https://download.kde.org/stable/frameworks/5.99/kimageformats-5.99.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : CC0-1.0 LGPL-2.0 LGPL-2.1 LGPL-3.0
@@ -22,6 +22,9 @@ BuildRequires : extra-cmake-modules pkgconfig(OpenEXR)
 BuildRequires : extra-cmake-modules-data
 BuildRequires : karchive-dev
 BuildRequires : libavif-dev
+BuildRequires : pkg-config
+BuildRequires : pkgconfig(libraw)
+BuildRequires : pkgconfig(libraw_r)
 
 %description
 # KImageFormats
@@ -55,15 +58,15 @@ license components for the kimageformats package.
 
 
 %prep
-%setup -q -n kimageformats-5.98.0
-cd %{_builddir}/kimageformats-5.98.0
+%setup -q -n kimageformats-5.99.0
+cd %{_builddir}/kimageformats-5.99.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1662940956
+export SOURCE_DATE_EPOCH=1665412597
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -79,7 +82,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1662940956
+export SOURCE_DATE_EPOCH=1665412597
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kimageformats
 cp %{_builddir}/kimageformats-%{version}/LICENSES/CC0-1.0.txt %{buildroot}/usr/share/package-licenses/kimageformats/82da472f6d00dc5f0a651f33ebb320aa9c7b08d0 || :
@@ -111,6 +114,7 @@ popd
 /usr/share/kservices5/qimageioplugins/pic.desktop
 /usr/share/kservices5/qimageioplugins/psd.desktop
 /usr/share/kservices5/qimageioplugins/ras.desktop
+/usr/share/kservices5/qimageioplugins/raw.desktop
 /usr/share/kservices5/qimageioplugins/rgb.desktop
 /usr/share/kservices5/qimageioplugins/tga.desktop
 /usr/share/kservices5/qimageioplugins/xcf.desktop
@@ -128,6 +132,7 @@ popd
 /usr/lib64/qt5/plugins/imageformats/kimg_pic.so
 /usr/lib64/qt5/plugins/imageformats/kimg_psd.so
 /usr/lib64/qt5/plugins/imageformats/kimg_ras.so
+/usr/lib64/qt5/plugins/imageformats/kimg_raw.so
 /usr/lib64/qt5/plugins/imageformats/kimg_rgb.so
 /usr/lib64/qt5/plugins/imageformats/kimg_tga.so
 /usr/lib64/qt5/plugins/imageformats/kimg_xcf.so
