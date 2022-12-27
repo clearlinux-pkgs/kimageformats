@@ -6,7 +6,7 @@
 #
 Name     : kimageformats
 Version  : 5.101.0
-Release  : 64
+Release  : 65
 URL      : https://download.kde.org/stable/frameworks/5.101/kimageformats-5.101.0.tar.xz
 Source0  : https://download.kde.org/stable/frameworks/5.101/kimageformats-5.101.0.tar.xz
 Source1  : https://download.kde.org/stable/frameworks/5.101/kimageformats-5.101.0.tar.xz.sig
