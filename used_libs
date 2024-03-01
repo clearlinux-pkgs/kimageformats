@@ -1,10 +1,10 @@
 libIex-3_1.so.30
 libImath-3_1.so.29
-libKF5Archive.so.5
+libKF6Archive.so.6
 libOpenEXR-3_1.so.30
-libQt5Core.so.5
-libQt5Gui.so.5
-libQt5PrintSupport.so.5
+libQt6Core.so.6
+libQt6Gui.so.6
+libQt6PrintSupport.so.6
 libavif.so.16
 libc.so.6
 libgcc_s.so.1
